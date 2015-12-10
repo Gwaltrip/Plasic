@@ -38,7 +38,7 @@ sub main						#the default start of the program
 	
 	$count = $returns + $i		#takes the returns and adds it to i then puts it into count
 	clear $returns				#deletes the reference to returns
-end main							#ends the main sub program
+end main						#ends the main sub program
 
 sub extra						#starts of new sub
 	$returns = 0				#inits returns to 0
