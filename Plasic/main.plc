@@ -1,0 +1,27 @@
+﻿global $count = 0				#globals are created on compile time
+global $returns
+
+sub main						#the default start of the program
+	local $k = 30				#locals are only valid within the scope of the sub
+	local $i
+	local $n = 15
+	
+	for $i = 0 to $k			#assigns $i to 0 and only breaks if $k is $i
+		if $i is $n then		#if statement which uses 'is' for comparision
+			extra				#sub program jump
+		end if					#end of the if statement
+	next $i						#end of for loop, also incerments $i
+	
+	$count = $returns + $i		#takes the returns and adds it to i then puts it into count
+	clear $returns				#deletes the reference to returns
+end sub							#ends the main sub program
+
+sub extra						#starts of new sub
+	$returns = 0				#inits returns to 0
+	local $k = 15				#varribles can be same name within the same scope.
+	local $i
+	
+	for $i = 0 to $k
+		$returns = $returns + $i
+	next $i
+end sub
