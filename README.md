@@ -1,6 +1,7 @@
 # Plasic - The Programming Language for PLP
 
 ##Keywords
+
 |Keyword|Description|
 |-------|-----------------------------------|
 |global|Creates a global varrible|
@@ -14,3 +15,7 @@
 |end if|Finish of if statment|
 |next|Incerments a varrible and the end of a for loop|
 |clear|Deletes a varrible and opens up a register|
+
+##Example code
+
+Below is sample code of a simple program.
