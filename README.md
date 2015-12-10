@@ -1,4 +1,4 @@
-# Plasic - The Programming Language for PLP
+# Plasic - The Basic Style Programming Language for PLP ASM
 
 ##Keywords
 
