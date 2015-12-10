@@ -17,9 +17,7 @@ namespace Plasic
             }
 
             Plasic p = new Plasic(fileloc);
-
-
-            Console.Read();
+            p.run();
         }
     }
 }

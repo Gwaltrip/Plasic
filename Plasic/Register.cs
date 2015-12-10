@@ -8,36 +8,49 @@ namespace Plasic
 {
     class Register
     {
-        public string Name { get; }
-        public int Initval { get; }
-        public bool Inscope { get; }
+        public string Name { get; set; }
+        public int Value { get; set; }
+        public bool Inscope { get; set; }
+        public bool Type { get; set; }
 
         public Register()
         {
             this.Name = string.Empty;
-            this.Initval = 0;
+            this.Value = 0;
             this.Inscope = false;
+            this.Type = false;
         }
 
-        public Register(int initval)
-        {
-            this.Name = string.Empty;
-            this.Initval = initval;
-            this.Inscope = false;
-        }
-
-        public Register(string name, int initval)
+        public Register(string name)
         {
             this.Name = name;
-            this.Initval = initval;
-            this.Inscope = false;
+            this.Value = 0;
+            this.Inscope = true;
+            this.Type = false;
         }
 
-        public Register(string name, int initval, bool inscope)
+        public Register(string name, int value)
         {
             this.Name = name;
-            this.Initval = initval;
+            this.Value = value;
+            this.Inscope = true;
+            this.Type = false;
+        }
+
+        public Register(string name, int value, bool inscope)
+        {
+            this.Name = name;
+            this.Value = value;
             this.Inscope = inscope;
+            this.Type = false;
+        }
+
+        public Register(string name, int value, bool inscope, bool type)
+        {
+            this.Name = name;
+            this.Value = value;
+            this.Inscope = inscope;
+            this.Type = type;
         }
     }
 }
