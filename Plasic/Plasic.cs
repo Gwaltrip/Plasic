@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Plasic
 {
@@ -56,6 +55,8 @@ namespace Plasic
                 heap.Add(sb.ToString(), new Register());
                 sb.Clear();
             }
+
+            plp.Add(".org 0x10000000");
         }
 
         public void run()
@@ -164,9 +165,16 @@ namespace Plasic
                         case "end":
                             if (segments.Length == 2)
                             {
-                                if (lables.Contains(segments[1]))
+                                if (segments[1].Equals("main"))
                                 {
                                     sb.Append("j ");
+                                    sb.Append(segments[1]);
+                                    plp.Add(sb.ToString());
+                                    plp.Add("nop");
+                                }
+                                else if (lables.Contains(segments[1]))
+                                {
+                                    sb.Append("j after");
                                     sb.Append(segments[1]);
                                     plp.Add(sb.ToString());
                                     plp.Add("nop");
@@ -195,8 +203,11 @@ namespace Plasic
                             {
                                 sb.Append("j ");
                                 sb.Append(segments[1]);
+                                sb.Append("\nnop");
+                                sb.Append("\nafter");
+                                sb.Append(segments[1]);
+                                sb.Append(":");
                                 plp.Add(sb.ToString());
-                                plp.Add("nop");
                             }
                             else
                                 //If there isn't two parts
