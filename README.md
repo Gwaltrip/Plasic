@@ -63,6 +63,9 @@ For loops must end with a 'next' with a varrible which iterates. If statements m
 
 When switching to another method you must place the name of the sub with no other words around it. In so if a sub is named 'extra', to jump to extra you must have only 'extra' written.
 
+##Globals vs Locals
+The biggest difference between the two is that Locals are removed after they fall out of scope where Globals need to be removed by the programmer. 
+
 ##Planed features
 
 ##Current limits
