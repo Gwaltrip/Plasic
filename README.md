@@ -15,6 +15,7 @@
 |end if|Finish of if statment|
 |next|Incerments a varrible and the end of a for loop|
 |clear|Deletes a varrible and opens up a register|
+|j|Jumps to the sub program|
 
 ##Example code
 
