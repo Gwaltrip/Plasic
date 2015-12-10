@@ -1,6 +1,8 @@
 # Plasic - The Programming Language for PLP
 
 ##Keywords
+|Keyword|Description|
+|-------|-----------------------------------|
 |global|Creates a global varrible|
 |local|Creates a local varrible|
 |sub|Creates a sub program start point|
