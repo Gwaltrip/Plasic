@@ -11,7 +11,7 @@
             }
 
             Plasic p = new Plasic(fileloc);
-            p.run();
+            p.Run();
         }
     }
 }

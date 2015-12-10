@@ -59,7 +59,7 @@ namespace Plasic
             plp.Add(".org 0x10000000");
         }
 
-        public void run()
+        public void Run()
         {
             foreach (var line in code)
             {
@@ -95,7 +95,7 @@ namespace Plasic
         public bool Clear(string name)
         {
             heap[references[name]] = new Register();
-            return references.Remove(name);
+            return true;//references.Remove(name);
         }
 
         public void Linescan(string line)
@@ -174,14 +174,14 @@ namespace Plasic
                                 }
                                 else if (lables.Contains(segments[1]))
                                 {
-                                    sb.Append("j after");
-                                    sb.Append(segments[1]);
+                                    sb.Append("pop $i0");
+                                    sb.Append("\njr $i0");
                                     plp.Add(sb.ToString());
                                     plp.Add("nop");
                                 }
                             }
                             else
-                                //If there isn't two parts
+                            //If there isn't two parts
                                 throw new Exception();
                             break;
                         case "next":
@@ -201,23 +201,64 @@ namespace Plasic
                         case "j":
                             if (segments.Length == 2)
                             {
-                                sb.Append("j ");
+                                sb.Append("li $i0, after");
+                                sb.Append(segments[1]);
+                                sb.Append("\npush $i0");
+                                sb.Append("\nj ");
                                 sb.Append(segments[1]);
                                 sb.Append("\nnop");
                                 sb.Append("\nafter");
                                 sb.Append(segments[1]);
                                 sb.Append(":");
+
                                 plp.Add(sb.ToString());
                             }
                             else
-                                //If there isn't two parts
+                            //If there isn't two parts
                                 throw new Exception();
                             break;
                     }
                 }
                 else
                 {
-                    throw  new Exception();
+                    throw new Exception();
+                }
+            }
+            else
+            {
+                if (segments.Length > 1)
+                {
+                    if (segments.Length == 3 && segments[1].Equals("="))
+                    {
+                        if (references.ContainsKey(segments[2]))
+                        {
+                            sb.Append("move ");
+                            sb.Append(references[segments[0]]);
+                            sb.Append(", ");
+                            sb.Append(references[segments[2]]);
+                            plp.Add(sb.ToString());
+                        }
+                        else
+                        {
+                            sb.Append("li ");
+                            sb.Append(references[segments[0]]);
+                            sb.Append(", ");
+                            sb.Append(segments[2]);
+                            plp.Add(sb.ToString());
+                        }
+                    }
+                    else if (segments.Length == 5 && segments[1].Equals("="))
+                    {
+
+                    }
+                    else
+                    {
+                        throw new Exception();
+                    }
+                }
+                else
+                {
+                    throw new Exception();
                 }
             }
         }
