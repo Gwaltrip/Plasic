@@ -22,33 +22,33 @@
 Below is sample code of a simple program.
 
 ```vbnet
-global $count = 5				#globals are created on compile time
-global $returns
+global $count = 5               #globals are created on compile time
 
-sub main						#the default start of the program
-	local $k = 30				#locals are only valid within the scope of the sub
-	local $i
-	local $n = 15
-	
-	for $i = 0 to $k			#assigns $i to 0 and only breaks if $k is $i
-		if $i is $n then		#if statement which uses 'is' for comparision
-			j extra				#sub program jump
-		end if					#end of the if statement
-	next $i						#end of for loop, also incerments $i
-	
-	$count = $returns + $i		#takes the returns and adds it to i then puts it into count
-	clear $returns				#deletes the reference to returns
-end main						#ends the main sub program
+sub main                        #the default start of the program
+    local $k = 30               #locals are only valid within the scope of the sub
+    local $i
+    local $n = 15
+	local $sum = 0
 
-sub extra						#starts of new sub
-	$returns = 0				#inits returns to 0
-	local $k = 15				#varribles can be same name within the same scope.
-	local $i
+    for $i = 0 to $k            #assigns $i to 0 and only breaks if $k is $i
+        if $i is $n then        #if statement which uses 'is' for comparision
+            $sum = partialSum($n)             #sub program jump
+        end if                  #end of the if statement
+    next $i                     #end of for loop, also incerments $i
+
+    $count = $sum + $i      		#takes the returns and adds it to i then puts it into count
+end main                        #ends the main sub program
+
+sub partialSum($max)                       #starts of new sub
+    local $sum = 0                #inits e to 0
+    local $i
+
+    for $i = 0 to $max
+        $sum = $sum + $i
+    next $i
 	
-	for $i = 0 to $k
-		$returns = $returns + $i
-	next $i
-end extra
+	return $sum
+end partialSum
 ```
 
 ##How it works
