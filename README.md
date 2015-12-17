@@ -14,7 +14,6 @@
 |then|Finish of logic statement inside if|
 |end if|Finish of if statment|
 |next|Incerments a varrible and the end of a for loop|
-|clear|Deletes a varrible and opens up a register|
 
 ##Example code
 
